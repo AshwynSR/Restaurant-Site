@@ -6,7 +6,7 @@ import { images } from '../../constants';
 import './Gallery.css';
 import { useRef } from 'react';
 
-const imagesList = [ images.gallery01, images.gallery02, images.gallery03, images.gallery04]
+const imagesList = [ images.gallery05, images.gallery06, images.gallery07, images.gallery08];
 
 const Gallery = () => {
   const scrollRef = useRef(null);
@@ -25,11 +25,11 @@ const Gallery = () => {
       <div className='app__gallery-content'>
         <SubHeading title='Instagram' />
         <h1 className='headtext__cormorant'>Photo Gallery</h1>
-        <p className='p__opensans' style={{color:"#AAA", marginTop:'2rem'}}>Our Photos</p>
+        <p className='p__opensans' style={{color:"#AAAAAA", marginTop:'2rem'}}>Our Photos</p>
         <button type='button' className='custom__button'>View More</button>
       </div>
       <div className='app__gallery-images'>
-        <div className='app__gallery-images_container'>
+        <div className='app__gallery-images_container' ref={scrollRef}>
           {imagesList.map((image, index) => (
             <div className='app__gallery-images_card flex__center' key={`gallery_image-${index + 1}`}>
               <img src={image} alt="image" />
@@ -39,7 +39,7 @@ const Gallery = () => {
         </div>
         <div className='app__gallery-images_arrows' ref={scrollRef}> 
           <BsArrowLeftShort className='gallery__arrow-icon' onClick={() => scroll("left")} />
-          <BsArrowRightShort className='gallery__arrow-icon' onClick={() => scroll(right)} />
+          <BsArrowRightShort className='gallery__arrow-icon' onClick={() => scroll("right")} />
         </div>
       </div>
     </div>
